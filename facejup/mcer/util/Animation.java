@@ -25,12 +25,12 @@ public class Animation<T> {
 			running.remove(object);
 	}
 
-	public Animation addFrame(Consumer<T> frameFunction, Long delay) {
+	public Animation<T> addFrame(Consumer<T> frameFunction, Long delay) {
 		frames.add(new Frame<T>(frameFunction, delay, 1));
 		return this;
 	}
 
-	public Animation addFrame(Consumer<T> frameFunction, Long delay, int repeat) {
+	public Animation<T> addFrame(Consumer<T> frameFunction, Long delay, int repeat) {
 		frames.add(new Frame<T>(frameFunction, delay, repeat));
 		return this;
 	}
@@ -45,18 +45,18 @@ public class Animation<T> {
 		return running.contains(object);
 	}
 
-	public Animation setLooping(Boolean looping) {
+	public Animation<T> setLooping(Boolean looping) {
 		this.looping = looping;
 		return this;
 	}
 
-	public Animation setLooping(Boolean looping, Long loopDelay) {
+	public Animation<T> setLooping(Boolean looping, Long loopDelay) {
 		this.looping = looping;
 		this.loopDelay = loopDelay;
 		return this;
 	}
 
-	public Animation setLoopDelay(Long loopDelay) {
+	public Animation<T> setLoopDelay(Long loopDelay) {
 		this.loopDelay = loopDelay;
 		return this;
 	}

@@ -24,7 +24,7 @@ public abstract class Command extends SubCommand implements CommandExecutor {
 		this.main = main;
 		main.getCommand(name).setExecutor(this);
 	}
-	
+
 	public Command registerSubCommand(String name, SubCommand subCommand) {
 		this.subCommands.put(name, subCommand);
 		return this;

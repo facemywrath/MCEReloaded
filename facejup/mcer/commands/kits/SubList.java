@@ -31,31 +31,26 @@ public class SubList extends SubCommand {
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return "View your currently owned kits.";
 	}
 
 	@Override
 	public String getUsage() {
-		// TODO Auto-generated method stub
 		return "";
 	}
 
 	@Override
 	public String getPermission() {
-		// TODO Auto-generated method stub
 		return "kits.list";
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "list";
 	}
 
 	@Override
 	public boolean consoleUse() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

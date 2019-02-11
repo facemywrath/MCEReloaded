@@ -2,16 +2,25 @@ package facejup.mcer.commands;
 
 import org.bukkit.command.CommandSender;
 
+import facejup.mcer.main.Main;
+
 public abstract class SubCommand {
 	
-	private Command parent;
+	private SubCommand parent;
 	
-	public SubCommand(Command parent) {
+	public SubCommand(SubCommand parent) {
 		this.parent = parent;
 	}
 
-	public Command getParent() {
+	public SubCommand getParent() {
 		return this.parent;
+	}
+	
+	public Main getMain() {
+		if(this instanceof Command) {
+			return ((Command)this).getMain();
+		}
+		return null;
 	}
 	
 	public abstract void execute(CommandSender player, String args[]);

@@ -9,6 +9,8 @@ public class CMDKits extends Command {
 		super(main, "kits");
 		this.registerSubCommand("list", new SubList(this));
 		this.registerSubCommand("menu", new SubMenu(this));
+		this.registerSubCommand("force", new SubForce(this));
+		this.registerSubCommand("test", new SubTest(this));
 	}
 
 	@Override

@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.MaterialData;
 
@@ -40,6 +43,12 @@ public class ItemCreator {
 
 	public ItemCreator type(Material material) {
 		this.itemStack.setType(material);
+		return this;
+	}
+	
+	public ItemCreator dye(Color color) {
+		if(!(meta instanceof LeatherArmorMeta)) return this;
+		((LeatherArmorMeta)meta).setColor(color);
 		return this;
 	}
 
@@ -121,18 +130,12 @@ public class ItemCreator {
 	}
 
 	public ItemCreator enchantments(Map<Enchantment, Integer> enchantments, boolean safe) {
-		if (safe)
-			itemStack.addEnchantments(enchantments);
-		else
-			itemStack.addUnsafeEnchantments(enchantments);
+		enchantments.keySet().forEach(enchantment -> meta.addEnchant(enchantment, enchantments.get(enchantment), !safe));
 		return this;
 	}
 
 	public ItemCreator enchantment(Enchantment enchantment, int level, boolean safe) {
-		if (safe)
-			itemStack.addEnchantment(enchantment, level);
-		else
-			itemStack.addUnsafeEnchantment(enchantment, level);
+		meta.addEnchant(enchantment, level, !safe);
 		return this;
 	}
 

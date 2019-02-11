@@ -12,8 +12,8 @@ import net.md_5.bungee.api.ChatColor;
 
 public class CMDStats extends Command {
 
-	public CMDStats(Main main, String name) {
-		super(main, name);
+	public CMDStats(Main main) {
+		super(main, "stats");
 	}
 	
 	@Override
@@ -51,42 +51,43 @@ public class CMDStats extends Command {
 			sendStatsMessage(sender, getMain().getUserManager().getUsers().get(offlinePlayer));
 			return;
 		}
+		sender.sendMessage("GAY");
 		sendStatsMessage(sender, new User(getMain().getSqlManager(), offlinePlayer));
 	
 	}
 	
 	public void sendStatsMessage(CommandSender sender, User user) {
-		sender.sendMessage(ChatColor.AQUA + user.getPlayer().getName() + "'s Stats");
-		sender.sendMessage(ChatColor.GREEN + "Coins: " + user.getCoins());
+		sender.sendMessage(ChatColor.GOLD + user.getPlayer().getName() + "'s Stats");
+		sender.sendMessage(ChatColor.AQUA + "Coins: " + ChatColor.GREEN + user.getCoins());
+		sender.sendMessage(ChatColor.AQUA + "Kills: " + ChatColor.GREEN + user.getKills());
+		sender.sendMessage(ChatColor.AQUA + "Deaths: " + ChatColor.GREEN + user.getDeaths());
+		sender.sendMessage(ChatColor.AQUA + "Wins: " + ChatColor.GREEN + user.getWins());
+		sender.sendMessage(ChatColor.AQUA + "Runnerups: " + ChatColor.GREEN + user.getRunnerups());
+		sender.sendMessage(ChatColor.AQUA + "Matches Played: " + ChatColor.GREEN + user.getPlayed());
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
 		return "View a players stats";
 	}
 
 	@Override
 	public String getUsage() {
-		// TODO Auto-generated method stub
 		return "(player)";
 	}
 
 	@Override
 	public String getPermission() {
-		// TODO Auto-generated method stub
 		return "mce.stats";
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
 		return "stats";
 	}
 
 	@Override
 	public boolean consoleUse() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
